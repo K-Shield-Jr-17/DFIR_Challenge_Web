@@ -1,0 +1,24 @@
+/* Decorative SVG filters are restricted to the entry page, never the text. */
+.entry-page{position:relative;isolation:isolate;min-height:100vh}
+.trace-atmosphere{display:none;position:absolute;inset:0 0 auto;height:1000px;max-height:100%;overflow:hidden;pointer-events:none;z-index:-1;mask-image:linear-gradient(#000 65%,transparent)}
+.effects-enabled .trace-atmosphere{display:block}
+.trace-field{width:100%;height:100%;display:block}
+.effects-enabled .trace-contours{transform-origin:1150px 195px;animation:trace-drift 24s ease-in-out infinite alternate}
+@keyframes trace-drift{from{transform:translate(0,0) rotate(-2deg)}to{transform:translate(-15px,22px) rotate(3deg)}}
+.entry-page .entry-main{padding-bottom:94px}
+.effects-enabled .entry-intro h1{color:#f1f6ee;text-shadow:0 0 42px #b5da6215}
+.effects-enabled .entry-intro .eyebrow{border:1px solid #b9e36b30;background:#b9e36b08;border-radius:3px;padding:7px 10px;display:inline-block}
+.effects-enabled .entry-card{background:linear-gradient(145deg,#17222bf2,#0e1820fa);box-shadow:0 12px 35px #0002,inset 0 1px #ffffff06}
+.effects-enabled .entry-card:hover{box-shadow:0 18px 42px #0005,0 0 24px color-mix(in srgb,var(--accent) 9%,transparent)}
+.effects-control{position:fixed;bottom:calc(22px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);z-index:10}
+#effects-toggle{display:flex;align-items:center;gap:12px;padding:12px 17px;border:1px solid #445246;border-radius:99px;background:#111b22f5;box-shadow:0 8px 30px #0006;color:#becbd4;font-size:14px;white-space:nowrap;min-height:46px}
+#effects-toggle:hover{border-color:#91aa69}
+.effects-icon{font-size:22px;line-height:1;color:#8e9caa}
+.effects-state{font:11px var(--mono);width:26px;color:#8292a1}
+.effects-track{width:30px;height:17px;border:1px solid #5a6872;border-radius:20px;display:flex;align-items:center;padding:2px}
+.effects-track>span{height:9px;width:9px;background:#8e9caa;border-radius:50%;transition:transform .2s}
+#effects-toggle[aria-checked="true"] .effects-state,#effects-toggle[aria-checked="true"] .effects-icon{color:var(--lime)}
+#effects-toggle[aria-checked="true"] .effects-track{border-color:#9abd60;background:#c4f56a18}
+#effects-toggle[aria-checked="true"] .effects-track>span{background:var(--lime);transform:translateX(13px)}
+@media(max-width:650px){.trace-atmosphere{height:720px;opacity:.6}.entry-page .entry-main{padding-bottom:96px}.effects-control{bottom:calc(15px + env(safe-area-inset-bottom))}}
+@media(prefers-reduced-motion:reduce){.effects-enabled .trace-contours{animation:none}.effects-track>span{transition:none}}

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRACE / DFIR Training Lab</title>
+  <meta name="description" content="ClickFix 침해사고의 흔적을 분석하는 DFIR 훈련 워크스페이스">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="lab-loading">
+  <aside class="sidebar">
+    <a class="brand" href="index.html" aria-label="난이도 선택 홈"><span class="brandmark">▧</span> TRACE<span
+        class="brand-dot">.</span></a>
+    <div class="workspace">TRAINING WORKSPACE <span>01</span></div>
+    <nav aria-label="메인 메뉴">
+      <a class="nav-link active" href="#overview"><span>◈</span> Lab overview <i>01</i></a>
+      <a class="nav-link" href="#missions"><span>☷</span> Investigation <i>06</i></a>
+      <a class="nav-link" href="#evidence"><span>▱</span> Evidence files <i>04</i></a>
+      <a class="nav-link" href="#topology"><span>⌘</span> Network map</a>
+    </nav>
+    <div class="side-case"><span class="eyebrow">CURRENT CASE</span>
+      <span class="mono">CASE # DFIR-001</span>
+      <div class="case-line"></div><small>Windows · Active Directory</small>
+    </div>
+    <div class="side-bottom"><span class="shield">◍</span>
+      <div>Team Circle <small>k-Shield Junior 17th</small></div>
+    </div>
+  </aside>
+  <div class="app">
+    <header class="topbar">
+      <div><span class="muted">Training labs</span><span class="slash">/</span><strong>ClickFix investigation</strong>
+      </div>
+      <div class="top-right"><span class="edition">BLUE TEAM SERIES</span><span class="avatar">TC</span></div>
+    </header>
+    <main>
+      <section id="overview" class="overview">
+        <div class="title-meta"><span class="eyebrow lime">DIGITAL FORENSICS & INCIDENT RESPONSE</span><span
+            class="case-id mono">LAB / 001</span></div>
+        <div class="title-row">
+          <div>
+            <h1>Follow the trace<span>.</span></h1>
+            <p class="subtitle">ClickFix에서 내부망까지, 하나의 침해사고를 재구성하세요.</p>
+          </div><a href="#missions" class="primary">조사 시작하기 <span>↗</span></a>
+        </div>
+        <div class="tags"><span class="tag difficulty">Easy · Artifact Analysis</span><span class="tag">Windows
+            Forensics</span><span class="tag">Threat Hunting</span><span class="tag">Active Directory</span></div>
+        <div class="level-selector" role="group" aria-label="훈련 난이도 선택">
+          <button class="level-option selected" data-level="easy" aria-pressed="true"><span
+              class="level-top"><b>Easy</b><span>01</span></span><strong>Artifact Analysis</strong>
+            <p>준비된 증적 분석 · 타임라인 작성</p>
+          </button>
+          <button class="level-option" data-level="medium" aria-pressed="false"><span
+              class="level-top"><b>Medium</b><span>02</span></span><strong>Guided Acquisition</strong>
+            <p>증적 선택 · 직접 수집 · 분석</p>
+          </button>
+          <button class="level-option" data-level="hard" aria-pressed="false"><span
+              class="level-top"><b>Hard</b><span>03</span></span><strong>Field Triage</strong>
+            <p>초동대응 · 도구 선정 · 침해 범위 규명</p>
+          </button>
+        </div>
+        <div class="level-summary" aria-live="polite"><span class="eyebrow">LEARNING OBJECTIVE</span>
+          <p id="level-objective">제공된 증적을 분석하고 사건의 전체 타임라인을 작성합니다.</p>
+        </div>
+        <div class="briefing-grid">
+          <article class="briefing panel">
+            <div class="section-label"><span>01 — CASE BRIEFING</span><span class="small-square"></span></div>
+            <h2>평범한 웹 접속에서 시작된<br>이상 징후</h2>
+            <p>사내 PC에서 의심스러운 외부 통신이 발견되었습니다. 이후 내부 파일 서버에서도 비정상적인 접근이 관측되었습니다.</p>
+            <p>당신은 사고 대응 분석가입니다. 남겨진 이벤트 로그와 네트워크 증적을 연결해 최초 진입점, 권한 변화, 그리고 침해 범위를 밝혀내세요.</p>
+            <div class="briefing-footer"><span>◷ <b>예상 소요</b> 2-3시간</span><span>▤ <b>분석 과제</b> 6개</span></div>
+          </article>
+          <article class="network panel" id="topology">
+            <div class="section-label"><span>02 — INVESTIGATION SCOPE</span><span class="network-label">ISOLATED
+                LAB</span></div>
+            <details class="scope-hint"><summary><span class="hint-symbol">?</span><strong>클릭해서 힌트를 확인하세요!</strong><span>IP 주소와 네트워크 구성이 공개됩니다.</span><span class="hint-action">네트워크 힌트 열기 ↗</span></summary><div class="hint-content"><div class="map">
+              <div class="network-row external">
+                <div class="node"><span class="node-icon">◎</span>
+                  <div>Web server<small>192.168.50.30</small></div>
+                </div>
+                <div class="node"><span class="node-icon">⌁</span>
+                  <div>External host<small>192.168.50.10</small></div>
+                </div>
+              </div>
+              <div class="map-connect"><span>WEB / NETWORK ACTIVITY</span></div>
+              <div class="victim"><span class="node-icon">▣</span>
+                <div>Employee workstation<small>Windows 10 · CORP\\employee01</small></div><span class="scope">FOCUS
+                  HOST</span>
+              </div>
+              <div class="map-connect lower"><span>INTERNAL NETWORK</span></div>
+              <div class="network-row">
+                <div class="node"><span class="node-icon">▦</span>
+                  <div>Domain controller<small>192.168.60.5</small></div>
+                </div>
+                <div class="node"><span class="node-icon">▤</span>
+                  <div>File server<small>192.168.60.20</small></div>
+                </div>
+              </div>
+            </div>
+            <div class="map-footer"><span class="dot"></span> 5 hosts <span>2 network segments</span><span
+                class="mono">VMware</span></div></div></details>
+          </article>
+        </div>
+      </section>
+      <section id="missions" class="missions">
+        <div class="section-heading">
+          <div><span class="eyebrow">THE INVESTIGATION</span>
+            <h2>흔적을 따라, 여섯 개의 질문</h2>
+          </div><span class="section-note">증적을 분석하고 사건의 흐름을 연결하세요.</span>
+        </div>
+        <div class="mission-grid"></div>
+      </section>
+      <section id="evidence" class="evidence-section">
+        <div class="section-heading">
+          <div><span class="eyebrow">YOUR STARTING POINT</span>
+            <h2>분석 자료</h2>
+          </div><span class="section-note">원본을 보존하고, 분석 사본으로 시작하세요.</span>
+        </div>
+        <div class="evidence-layout">
+          <div class="file-list panel"></div>
+          <aside class="analyst-note"><span class="eyebrow lime">ANALYST'S NOTE</span>
+            <h3>정답보다 중요한 건,<br>그 답을 뒷받침하는 증거.</h3>
+            <p>모든 판단에 증적 출처와 시각을 기록하세요. 단일 이벤트보다 여러 호스트의 연관된 흔적이 더 많은 것을 알려줍니다.</p>
+            <div>01 <span>타임존 통일</span></div>
+            <div>02 <span>증적 무결성 확인</span></div>
+            <div>03 <span>계정·민감 정보 마스킹</span></div>
+          </aside>
+        </div>
+      </section>
+      <footer><a class="footer-brand" href="#overview">TRACE<span>.</span></a><span>Investigate. Connect.
+          Understand.</span><span class="mono">DFIR LAB SERIES / 001 <b>© 2026 TRACE</b></span></footer>
+    </main>
+  </div>
+  <dialog id="mission-dialog" aria-labelledby="dialog-title">
+    <div class="dialog-head"><span class="eyebrow lime" id="dialog-phase"></span><button class="close"
+        aria-label="닫기">x</button></div>
+    <h2 id="dialog-title"></h2>
+    <p id="dialog-description"></p>
+    <div class="dialog-evidence"><span class="eyebrow">EVIDENCE TO REVIEW</span>
+      <p id="dialog-sources"></p>
+    </div>
+    <form id="answer-form"><label for="analyst-answer">답변 제출 <span>등록된 정답 중 하나와 일치하면 정답 처리됩니다.</span></label><textarea
+        id="analyst-answer" placeholder="정답 또는 플래그를 입력하세요." aria-describedby="answer-feedback"></textarea>
+      <p id="answer-feedback" role="status" aria-live="polite"></p>
+      <div class="dialog-bottom"><span>제출 내용은 서버에 저장되지 않습니다.</span><button id="submit-answer" class="secondary"
+          type="submit">답변 제출</button></div>
+    </form>
+  </dialog>
+  <dialog id="level-confirm" aria-labelledby="level-confirm-title" aria-describedby="level-confirm-description">
+    <span class="eyebrow lime">CHANGE DIFFICULTY</span>
+    <h2 id="level-confirm-title">난이도를 변경하시겠습니까?</h2>
+    <p id="level-confirm-description"></p>
+    <div class="confirm-actions"><button type="button" class="secondary" id="level-cancel" autofocus>현재 난이도 유지</button><button type="button" class="primary" id="level-accept">변경하기</button></div>
+  </dialog>
+  <script src="lab-content.js"></script>
+  <script src="lab-utils.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
