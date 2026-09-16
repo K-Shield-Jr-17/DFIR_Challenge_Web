@@ -70,10 +70,10 @@ window.LAB_CONTENT = {
       { "id": "hard-08", "title": "종합 사고보고서", "description": "침해 범위·원인·타임라인·대응안을 작성하고 모든 판단을 확인된 사실, 강한 정황, 추정으로 구분하세요.", "sources": "all recovered evidence", "answers": ["TRACE{FACT_EVIDENCE_INFERENCE}"], "caseSensitive": false, "placeholder": "TRACE{FACT_EVIDENCE_INFERENCE}" }
     ],
     "files": [
-      { "name": "VICTIM_Uninstrumented.vmem", "description": "수집 도구가 활성화되지 않은 VM 메모리 덤프", "format": "VMEM", "url": "" },
-      { "name": "VICTIM_Uninstrumented.vmsn", "description": "메모리 스냅샷 메타데이터", "format": "VMSN", "url": "" },
-      { "name": "VICTIM_Uninstrumented.vmdk", "description": "수집 도구 없이 시나리오가 진행된 디스크 덤프", "format": "VMDK", "url": "" },
-      { "name": "VICTIM_Uninstrumented.vmx", "description": "VMware 가상머신 구성 파일", "format": "VMX", "url": "" }
+      { "name": "VICTIM_Uninstrumented.vmem", "description": "수집 도구가 활성화되지 않은 VM 메모리 덤프", "format": "VMEM", "url": "https://drive.google.com/file/d/18sT1UZ4cak7jyVwM-ODTwjSt947rlOJX/view?usp=drive_link" },
+      { "name": "VICTIM_Uninstrumented.vmsn", "description": "메모리 스냅샷 메타데이터", "format": "VMSN", "url": "https://drive.google.com/file/d/1zdpZ62UOdm-ZB5qDJMfdt9xAIPIKObfR/view?usp=drive_link" },
+      { "name": "VICTIM_Uninstrumented.vmdk", "description": "수집 도구 없이 시나리오가 진행된 디스크 덤프", "format": "VMDK", "url": "https://drive.google.com/file/d/1ElFhGMDOjwwnXQmMM8074T9JKZHSZmAZ/view?usp=drive_link" },
+      { "name": "VICTIM_Uninstrumented.vmx", "description": "VMware 가상머신 구성 파일", "format": "VMX", "url": "https://drive.google.com/file/d/1GTqlbBL3_vvKn1lAstPDkG1GkkF5dYKw/view?usp=drive_link" }
     ]
   }
 };
